@@ -62,6 +62,21 @@
       TrendingDown,
     } = LucideReact;
 
+        // Global error handler to surface runtime errors on the page. This attaches a listener
+        // to the window's `error` event and injects a visible message when something goes wrong.
+        window.addEventListener('error', function(event) {
+          // Create a <pre> element to display the error details in red text.
+          const errorDiv = document.createElement('pre');
+          errorDiv.style.color = 'red';
+          errorDiv.style.backgroundColor = '#ffeeee';
+          errorDiv.style.padding = '1rem';
+          errorDiv.style.margin = '1rem';
+          errorDiv.style.border = '1px solid #ffaaaa';
+          errorDiv.style.whiteSpace = 'pre-wrap';
+          errorDiv.textContent = 'Error: ' + event.message + '\n' + (event.filename || '') + ':' + event.lineno;
+          document.body.appendChild(errorDiv);
+        });
+
     const App = () => {
       // Theme state
       const [isDark, setIsDark] = useState(false);
