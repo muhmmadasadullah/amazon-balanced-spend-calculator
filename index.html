@@ -55,7 +55,11 @@
     // in the UMD build and cause React error #130 (invalid element type). We
     // define fall‑back dummy components for any icons we reference but do not
     // import here. Each dummy component returns null so it renders nothing.
-    const { Info } = LucideReact;
+    // All icons are stubbed to avoid undefined exports causing React error #130. Each icon
+    // function returns null so nothing is rendered. If you want to restore icons,
+    // ensure that the UMD build of lucide-react exports them correctly and then
+    // import them from LucideReact.
+    const Info = () => null;
     const Download = () => null;
     const Moon = () => null;
     const Sun = () => null;
