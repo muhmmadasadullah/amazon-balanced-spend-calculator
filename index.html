@@ -51,16 +51,18 @@
       ResponsiveContainer,
       ReferenceLine,
     } = Recharts;
-    const {
-      Info,
-      Download,
-      Moon,
-      Sun,
-      RotateCcw,
-      Share2,
-      TrendingUp,
-      TrendingDown,
-    } = LucideReact;
+    // Import only the Info icon from LucideReact. Some other icons are not present
+    // in the UMD build and cause React error #130 (invalid element type). We
+    // define fall‑back dummy components for any icons we reference but do not
+    // import here. Each dummy component returns null so it renders nothing.
+    const { Info } = LucideReact;
+    const Download = () => null;
+    const Moon = () => null;
+    const Sun = () => null;
+    const RotateCcw = () => null;
+    const Share2 = () => null;
+    const TrendingUp = () => null;
+    const TrendingDown = () => null;
 
         // Global error handler to surface runtime errors on the page. This attaches a listener
         // to the window's `error` event and injects a visible message when something goes wrong.
