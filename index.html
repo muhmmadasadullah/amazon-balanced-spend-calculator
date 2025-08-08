@@ -16,14 +16,14 @@
     <meta property="twitter:title" content="Amazon Balanced Spend Calculator" />
     <meta property="twitter:description" content="Interactive tool to calculate your balanced ad spend on Amazon to achieve target TACOS." />
     <!-- CDN libraries -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/recharts@2.8.0/umd/Recharts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://cdn.jsdelivr.net/npm/recharts@2.8.0/umd/Recharts.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons UMD build -->
-    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@latest/dist/umd/lucide-react.js"></script>
     <!-- Babel for in-browser JSX transformation -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
     <style>
         /* Custom tooltip display for info icons */
         .info-group:hover .info-tooltip {
@@ -36,7 +36,7 @@
 </head>
 <body class="min-h-screen">
     <div id="root"></div>
-    <script type="text/babel">
+    <script type="text/babel" data-presets="react">
     // Destructure required components from global libraries
     const { useState, useEffect } = React;
     const {
@@ -58,7 +58,7 @@
       Share2,
       TrendingUp,
       TrendingDown,
-    } = lucideReact;
+    } = LucideReact;
 
     const App = () => {
       // Theme state
