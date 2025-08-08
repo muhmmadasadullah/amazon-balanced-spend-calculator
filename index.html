@@ -106,6 +106,15 @@
         Balanced: { tacos: 15, acos: 35 },
         Aggressive: { tacos: 20, acos: 40 },
       };
+
+      // Color classes for each quick scenario button. These classes provide distinct yet cohesive
+      // colors so that the quick scenario buttons are more engaging while still fitting into the overall
+      // color scheme. Each scenario maps to a Tailwind background class for the default and hover state.
+      const scenarioColors = {
+        Conservative: 'bg-green-500 hover:bg-green-600',
+        Balanced: 'bg-blue-500 hover:bg-blue-600',
+        Aggressive: 'bg-red-500 hover:bg-red-600',
+      };
       // Utility functions
       const formatNumberWithCommas = (value) => {
         if (!value) return '';
@@ -310,21 +319,33 @@
           }`}
         >
           {/* Top Navigation Bar */}
-          <div className="sticky top-0 z-20 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-700">
+          <div className="sticky top-0 z-20 bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-indigo-800 dark:to-blue-800 border-b border-indigo-700 dark:border-indigo-900 shadow-md">
             <div className="max-w-6xl mx-auto px-6 py-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Amazon Balanced Spend</h1>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Calculate optimal ad spend to hit your TACOS target</p>
+                  <h1 className="text-2xl font-bold text-white">Amazon Balanced Spend</h1>
+                  <p className="text-sm text-indigo-200">Calculate optimal ad spend to hit your TACOS target</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <button type="button" onClick={handleReset} className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors border border-gray-300">
+                  <button
+                    type="button"
+                    onClick={handleReset}
+                    className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white bg-white/10 hover:bg-white/20 rounded-lg transition-colors border border-white/20"
+                  >
                     <RotateCcw size={16} /> Reset
                   </button>
-                  <button type="button" onClick={handleShare} className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors border border-gray-300">
+                  <button
+                    type="button"
+                    onClick={handleShare}
+                    className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white bg-white/10 hover:bg-white/20 rounded-lg transition-colors border border-white/20"
+                  >
                     <Share2 size={16} /> Share
                   </button>
-                  <button type="button" onClick={handleDarkMode} className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                  <button
+                    type="button"
+                    onClick={handleDarkMode}
+                    className="p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors"
+                  >
                     {isDark ? <Sun size={16} /> : <Moon size={16} />}
                   </button>
                 </div>
@@ -335,11 +356,16 @@
             {/* Scenario Presets */}
             <div className="mb-6">
               <div className="flex items-center gap-2 mb-3">
-                <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">Quick Scenarios</h3>
+                <h3 className="text-sm font-semibold text-indigo-700 dark:text-indigo-200">Quick Scenarios</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {Object.keys(scenarioPresets).map((scenario) => (
-                  <button key={scenario} type="button" onClick={() => applyScenario(scenario)} className="px-4 py-2 rounded-xl text-sm font-medium bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 shadow-sm">
+                  <button
+                    key={scenario}
+                    type="button"
+                    onClick={() => applyScenario(scenario)}
+                    className={`px-4 py-2 rounded-xl text-sm font-medium text-white transition-colors duration-200 shadow-sm ${scenarioColors[scenario]}`}
+                  >
                     {scenario}
                   </button>
                 ))}
